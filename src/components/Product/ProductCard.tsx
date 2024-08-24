@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <ProductTooltip product={product} />
       </div>
       <div className="px-4 py-4">
-        <div className="text-sm text-gray-500">{product.category?.label}</div>
+        <div className="text-sm text-gray-500">{ product.category?.label ? product.category?.label : "N/A"}</div>
         {/* <Link href={`/product/details/${product._id}`} className="font-bold text-xl mb-2 hover:underline"> */}
         <Link
           href={`/product/details/${product._id}`}
@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {trimText(product.name, 20)}
         </Link>
         <div className="text-gray-700 text-base">
-          By <span className="text-primaryMat">{product.brand?.label}</span>
+          By <span className="text-primaryMat">{product.brand?.label ? product.brand?.label : "N/A"}</span>
         </div>
         <div className="mt-2 flex items-center justify-start gap-[15px]">
           <div className="flex items-center">

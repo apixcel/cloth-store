@@ -116,7 +116,7 @@ const ProductsView: React.FC = () => {
                       alt="img"
                       className=""
                     />
-                    <div className="flex items-center justify-between w-full ">
+                    <div className="flex items-center justify-between w-full md:ml-[10px]">
                       <p className="font-medium">{category.label}</p>
                       {/* <p className="font-medium bg-primaryMat px-[10px] py-[5px] text-[12px] rounded-2xl text-white">
                         {category.count}40
@@ -172,7 +172,7 @@ const ProductsView: React.FC = () => {
                       alt="img"
                       className=""
                     />
-                    <div className="flex items-center justify-between w-full ">
+                    <div className="flex items-center justify-between w-full md:ml-[10px]">
                       <p className="font-medium">{brand.label}</p>
                     </div>
                   </button>
