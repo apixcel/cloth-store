@@ -14,13 +14,13 @@ const CartView = () => {
   const total = (subtotal + delivery).toFixed(2);
   const subtotalValue = subtotal.toFixed(2);
 
-  const handleDelete = (id: string) => {
-    console.log("Deleting item with id:", id);
-    dispatch(deleteCart({ id }));
+  const handleDelete = (productId: string) => {
+    console.log("Deleting item with id:", productId);
+    dispatch(deleteCart({ productId }));
   };
 
-  const handleQuantityChange = (id: string, quantity: string) => {
-    dispatch(updateQuantity({ id, quantity }));
+  const handleQuantityChange = (productId: string, quantity: string) => {
+    dispatch(updateQuantity({ productId, quantity }));
   };
 
   return (
@@ -64,7 +64,7 @@ const CartView = () => {
                     defaultValue={item.quantity}
                     className="border w-16 p-2"
                     onChange={(e) =>
-                      handleQuantityChange(item.id, e.target.value)
+                      handleQuantityChange(item.productId, e.target.value)
                     }
                   />
                 </div>
@@ -72,7 +72,7 @@ const CartView = () => {
                   ${item.price * parseInt(item.quantity)}
                 </div>
                 <div className="w-[70px] self-center">
-                  <button onClick={() => handleDelete(item.id)}>
+                  <button onClick={() => handleDelete(item.productId)}>
                     <Trash className="hover:text-green-500" />
                   </button>
                 </div>
