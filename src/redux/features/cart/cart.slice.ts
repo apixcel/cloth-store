@@ -14,7 +14,7 @@ import storage from "redux-persist/lib/storage";
 
 // Define CartItem and CartState interfaces
 interface CartItem {
-  id: string;
+  productId: string;
   photo: string;
   name: string;
   rating?: number;
@@ -28,12 +28,12 @@ interface CartState {
 }
 
 interface UpdateObjectPayload {
-  id: string;
+  productId: string;
   newObj: CartItem;
 }
 
 interface DeleteObjectPayload {
-  id: string;
+  productId: string;
 }
 
 // Initial state
@@ -53,7 +53,7 @@ const cartSlice = createSlice({
   reducers: {
     addCart: (state, action: PayloadAction<CartItem>) => {
       const newItem = action.payload;
-      const existingItem = state.cart.find((item) => item.id === newItem.id);
+      const existingItem = state.cart.find((item) => item.productId === newItem.productId);
 
       if (existingItem) {
         existingItem.quantity = String(
@@ -66,8 +66,8 @@ const cartSlice = createSlice({
       state.subtotal = calculateSubtotal(state.cart);
     },
     updateCart: (state, action: PayloadAction<UpdateObjectPayload>) => {
-      const { id, newObj } = action.payload;
-      const index = state.cart.findIndex((obj) => obj.id === id);
+      const { productId, newObj } = action.payload;
+      const index = state.cart.findIndex((obj) => obj.productId === productId);
       if (index !== -1) {
         state.cart[index] = {
           ...state.cart[index],
@@ -78,17 +78,17 @@ const cartSlice = createSlice({
       state.subtotal = calculateSubtotal(state.cart);
     },
     deleteCart: (state, action: PayloadAction<DeleteObjectPayload>) => {
-      const { id } = action.payload;
-      state.cart = state.cart.filter((obj) => obj.id !== id);
+      const { productId } = action.payload;
+      state.cart = state.cart.filter((obj) => obj.productId !== productId);
 
       state.subtotal = calculateSubtotal(state.cart);
     },
     updateQuantity: (
       state,
-      action: PayloadAction<{ id: string; quantity: string }>
+      action: PayloadAction<{ productId: string; quantity: string }>
     ) => {
-      const { id, quantity } = action.payload;
-      const item = state.cart.find((obj) => obj.id === id);
+      const { productId, quantity } = action.payload;
+      const item = state.cart.find((obj) => obj.productId === productId);
       if (item) {
         item.quantity = quantity;
       }

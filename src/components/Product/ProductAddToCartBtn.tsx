@@ -11,7 +11,7 @@ const ProductAddToCartBtn = ({ product }: { product: IProduct }) => {
 
   const handleAddToCart = () => {
     const body = {
-      id: product._id!,
+      productId: product._id!,
       photo: product.photo,
       name: product.name,
       rating: product.averageRating,

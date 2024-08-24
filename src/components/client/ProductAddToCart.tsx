@@ -26,7 +26,7 @@ const ProductAddToCart = ({ data }: { data: IProduct }) => {
 
   const addToCart = () => {
     const body = {
-      id: data._id!,
+      productId: data._id!,
       photo: data.photo,
       name: data.name,
       rating: data.averageRating,
@@ -42,7 +42,7 @@ const ProductAddToCart = ({ data }: { data: IProduct }) => {
 
   const addToCartCustom = () => {
     const body = {
-      id: data._id!,
+      productId: data._id!,
       photo: data.photo,
       name: data.name,
       rating: data.averageRating,

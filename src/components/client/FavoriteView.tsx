@@ -15,7 +15,7 @@ const FavoriteView = () => {
 
   const addToCart = (item: any) => {
     const body = {
-      id: item._id!,
+      productId: item._id!,
       photo: item.photo,
       name: item.name,
       rating: item.rating,

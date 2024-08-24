@@ -88,9 +88,9 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
 
         const order = await createOrder(payload);
 
-        dispatch(clearCart());
+        // dispatch(clearCart());
         Cookies.remove("redirect");
-        router.push(`/payment-success?amount=${amount}`);
+        // router.push(`/payment-success?amount=${amount}`);
       }
 
       setLoading(false);
